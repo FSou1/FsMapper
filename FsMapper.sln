@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FsMapper", "FsMapper\FsMapper.csproj", "{1270CB5F-C2B4-4F99-AAAC-EF1E6784CD4A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{05A2F25A-0290-4E8A-822D-C341E0516332}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FsMapper.Tests", "FsMapper.Tests\FsMapper.Tests.csproj", "{2950C264-00FC-457A-B2DD-19F15755CA77}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FsMapper.Tests", "tests\FsMapper.Tests\FsMapper.Tests.csproj", "{2950C264-00FC-457A-B2DD-19F15755CA77}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{48A045D3-403E-40CB-89E8-D2475A12D8D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "benchmarks", "benchmarks", "{95849ABB-183A-458B-B7AA-821434D024C1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FsMapper.Benchmarks", "benchmarks\FsMapper.Benchmarks\FsMapper.Benchmarks.csproj", "{71E963F6-9912-4307-810A-738614940AB5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FsMapper", "src\FsMapper\FsMapper.csproj", "{2CCE2EB6-C5EE-4530-ABE7-0765066CD25F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,17 +21,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1270CB5F-C2B4-4F99-AAAC-EF1E6784CD4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1270CB5F-C2B4-4F99-AAAC-EF1E6784CD4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1270CB5F-C2B4-4F99-AAAC-EF1E6784CD4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1270CB5F-C2B4-4F99-AAAC-EF1E6784CD4A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2950C264-00FC-457A-B2DD-19F15755CA77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2950C264-00FC-457A-B2DD-19F15755CA77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2950C264-00FC-457A-B2DD-19F15755CA77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2950C264-00FC-457A-B2DD-19F15755CA77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71E963F6-9912-4307-810A-738614940AB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71E963F6-9912-4307-810A-738614940AB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71E963F6-9912-4307-810A-738614940AB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71E963F6-9912-4307-810A-738614940AB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CCE2EB6-C5EE-4530-ABE7-0765066CD25F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CCE2EB6-C5EE-4530-ABE7-0765066CD25F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CCE2EB6-C5EE-4530-ABE7-0765066CD25F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CCE2EB6-C5EE-4530-ABE7-0765066CD25F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2950C264-00FC-457A-B2DD-19F15755CA77} = {05A2F25A-0290-4E8A-822D-C341E0516332}
+		{71E963F6-9912-4307-810A-738614940AB5} = {95849ABB-183A-458B-B7AA-821434D024C1}
+		{2CCE2EB6-C5EE-4530-ABE7-0765066CD25F} = {48A045D3-403E-40CB-89E8-D2475A12D8D8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0A4DAF14-1CFF-40E8-8E7F-3150188752E5}

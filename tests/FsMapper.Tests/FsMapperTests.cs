@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FsMapper.Tests
@@ -10,12 +6,12 @@ namespace FsMapper.Tests
     [TestClass]
     public class FsMapperTests
     {
-        private IFsMapper mapper;
+        private IMapper mapper;
 
         [TestInitialize]
         public void Init()
         {
-            mapper = new FsMapper();
+            mapper = new Mapper();
         }
 
         [TestMethod]
@@ -23,13 +19,7 @@ namespace FsMapper.Tests
         {
             var dto = GetCustomerDto();
 
-            mapper.Register<CustomerDto, Customer>(x => new Customer
-            {
-                Id = x.Id,
-                Title = x.Title,
-                CreatedAtUtc = x.CreatedAtUtc,
-                IsDeleted = x.IsDeleted
-            });
+            mapper.Register<CustomerDto, Customer>();
 
             var customer = mapper.Map<CustomerDto, Customer>(dto);
 
