@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace FsMapper.Build
 {
-    public interface IObjectActivator
+    public interface IObjectBuilder
     {
         Expression<Func<TDest>> GetActivator<TDest>();
     }

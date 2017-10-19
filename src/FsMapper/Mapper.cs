@@ -5,25 +5,24 @@ namespace FsMapper
 {
     public class Mapper : IMapper
     {
-        public void Register<TSource, TDest>()
+        public void Register<TSource, TDest>() where TDest : class
         {
-            var expression = _activator.GetActivator<TDest>();
-            _storage.Add<TSource, TDest>(expression);
+            _storage.Add(_builder.GetActivator<TDest>());
         }
 
         public TDest Map<TSource, TDest>(TSource source)
         {
-            var activator = _storage.Get<TSource, TDest>();
-            return (TDest) activator(source);
+            var activator = _storage.Get<TDest>();
+            return activator();
         }
         
-        private readonly IObjectActivator _activator = new ExpressionCtorActivator();
-        private readonly IMappingStorage _storage = new DictionaryMappingStorage();
+        private readonly IObjectBuilder _builder = new ExpressionCtorObjectBuilder();
+        private readonly IActivatorStorage _storage = new DictionaryActivatorStorage();
     }
 
     public interface IMapper
     {
-        void Register<TSource, TDest>();
+        void Register<TSource, TDest>() where TDest : class;
         
         TDest Map<TSource, TDest>(TSource source);
     }

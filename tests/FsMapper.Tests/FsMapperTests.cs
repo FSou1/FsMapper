@@ -1,4 +1,5 @@
 ﻿using System;
+using FsMapper.Tests.Dto;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FsMapper.Tests
@@ -36,21 +37,5 @@ namespace FsMapper.Tests
             CreatedAtUtc = new DateTime(2017, 9, 3),
             IsDeleted = true
         };
-    }
-
-    internal class CustomerDto
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public DateTime CreatedAtUtc { get; set; }
-        public bool IsDeleted { get; set; }
-    }
-
-    internal class Customer
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public DateTime CreatedAtUtc { get; set; }
-        public bool IsDeleted { get; set; }
     }
 }
