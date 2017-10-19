@@ -9,9 +9,9 @@ namespace FsMapper.Benchmarks.Mapping
     using ValueInjecterMapper = Omu.ValueInjecter.Mapper;
     using AgileMapper = AgileObjects.AgileMapper.Mapper;
 
-    public class MappingFunc
+    public class SingleObjectMappingFunc
     {
-        private IMapper _mapper;
+        private IMapper mapper;
         private CustomerDto dto;
 
         [GlobalSetup]
@@ -19,13 +19,13 @@ namespace FsMapper.Benchmarks.Mapping
         {
             dto = GetCustomerDto();
             
-            //fsMapper = ConfigureFsMapper();
+            mapper = ConfigureFsMapper();
             ConfigureExpressMapper();
             ConfigureAutoMapper();
         }
 
-        //[Benchmark]
-        //public Customer FsMapperBenchmark() => fsMapper.Map<CustomerDto, Customer>(dto);
+        [Benchmark]
+        public Customer FsMapperBenchmark() => mapper.Map<CustomerDto, Customer>(dto);
 
         [Benchmark]
         public Customer ExpressMapperBenchmark() => ExpressMapper.Map<CustomerDto, Customer>(dto);
@@ -38,6 +38,15 @@ namespace FsMapper.Benchmarks.Mapping
         
         [Benchmark]
         public Customer AgileMapperBenchmark() => AgileMapper.Map(dto).ToANew<Customer>();
+
+        [Benchmark]
+        public Customer CtorMapperBenchmark() => new Customer
+        {
+            Id = dto.Id,
+            CreatedAtUtc = dto.CreatedAtUtc,
+            IsDeleted = dto.IsDeleted,
+            Title = dto.Title
+        };
 
         #region Configure
         internal IMapper ConfigureFsMapper()
@@ -60,6 +69,7 @@ namespace FsMapper.Benchmarks.Mapping
         }
         #endregion
 
+        #region Dto
         internal CustomerDto GetCustomerDto() => new CustomerDto
         {
             Id = 42,
@@ -67,6 +77,7 @@ namespace FsMapper.Benchmarks.Mapping
             CreatedAtUtc = new DateTime(2017, 9, 3),
             IsDeleted = true
         };
+        #endregion
     }
 
     public class CustomerDto

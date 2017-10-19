@@ -1,27 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FsMapper.Build;
+using FsMapper.Storage;
 
 namespace FsMapper
 {
     public class Mapper : IMapper
     {
-        private IDictionary<(Type, Type), Func<object, object>> dict 
-            = new Dictionary<(Type, Type), Func<object, object>>();
-
         public void Register<TSource, TDest>()
         {
-            throw new NotImplementedException();
+            var expression = _activator.GetActivator<TDest>();
+            _storage.Add<TSource, TDest>(expression);
         }
 
         public TDest Map<TSource, TDest>(TSource source)
         {
-            if (dict.TryGetValue((typeof(TSource), typeof(TDest)), out var func))
-            {
-                return (TDest) func(source);
-            }
-            
-            throw new NotSupportedException();
+            var activator = _storage.Get<TSource, TDest>();
+            return (TDest) activator(source);
         }
+        
+        private readonly IObjectActivator _activator = new ExpressionCtorActivator();
+        private readonly IMappingStorage _storage = new DictionaryMappingStorage();
     }
 
     public interface IMapper

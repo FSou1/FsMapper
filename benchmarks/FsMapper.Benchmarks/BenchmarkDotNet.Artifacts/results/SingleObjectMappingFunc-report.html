@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>SingleObjectMappingFunc</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.10.9, OS=Windows 10 Redstone 1 (10.0.14393)
+Processor=Intel Core i7-6700 CPU 3.40GHz (Skylake), ProcessorCount=8
+Frequency=3328123 Hz, Resolution=300.4697 ns, Timer=TSC
+.NET Core SDK=2.0.0
+  [Host]     : .NET Core 2.0.0 (Framework 4.6.00001.0), 64bit RyuJIT
+  DefaultJob : .NET Core 2.0.0 (Framework 4.6.00001.0), 64bit RyuJIT
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>          Method</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th>
+</tr>
+</thead><tbody><tr><td>FsMapperBenchmark</td><td>163.595 ns</td><td>3.3286 ns</td><td>4.4436 ns</td><td>161.971 ns</td>
+</tr><tr><td>ExpressMapperBenchmark</td><td>151.014 ns</td><td>3.0238 ns</td><td>4.4322 ns</td><td>148.675 ns</td>
+</tr><tr><td>AutoMapperBenchmark</td><td>107.625 ns</td><td>0.6510 ns</td><td>0.5436 ns</td><td>107.709 ns</td>
+</tr><tr><td>MapsterBenchmark</td><td>55.603 ns</td><td>0.2196 ns</td><td>0.1947 ns</td><td>55.566 ns</td>
+</tr><tr><td>AgileMapperBenchmark</td><td>126.513 ns</td><td>0.7332 ns</td><td>0.6859 ns</td><td>126.465 ns</td>
+</tr><tr><td>CtorMapperBenchmark</td><td>2.955 ns</td><td>0.0235 ns</td><td>0.0209 ns</td><td>2.955 ns</td>
+</tr></tbody></table>
+</body>
+</html>
