@@ -35,7 +35,7 @@ namespace FsMapper.Benchmarks.Mapping
 
         [Benchmark]
         public Customer MapsterBenchmark() => dto.Adapt<Customer>();
-        
+
         [Benchmark]
         public Customer AgileMapperBenchmark() => AgileMapper.Map(dto).ToANew<Customer>();
 
