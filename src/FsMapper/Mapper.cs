@@ -12,11 +12,10 @@ namespace FsMapper
 
         public TDest Map<TSource, TDest>(TSource source)
         {
-            var activator = _storage.Get<TDest>();
-            return activator();
+            return _storage.Get<TDest>()();
         }
         
-        private readonly IObjectBuilder _builder = new DynamicMethodObjectBuilder();
+        private readonly IObjectBuilder _builder = new ExpressionNewObjectBuilder();
         private readonly IActivatorStorage _storage = new DictionaryActivatorStorage();
     }
 

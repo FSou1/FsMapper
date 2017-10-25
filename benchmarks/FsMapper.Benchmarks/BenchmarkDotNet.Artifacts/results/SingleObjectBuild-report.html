@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>SingleObjectMappingFunc</title>
+<title>SingleObjectBuild</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -23,10 +23,11 @@ Frequency=2143477 Hz, Resolution=466.5317 ns, Timer=TSC
 <pre><code></code></pre>
 
 <table>
-<thead><tr><th>       Method</th><th>Mean</th><th>Error</th><th>StdDev</th>
+<thead><tr><th>                        Method</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th>
 </tr>
-</thead><tbody><tr><td>FsMapperBenchmark</td><td>78.077 ns</td><td>0.2724 ns</td><td>0.2548 ns</td>
-</tr><tr><td>CtorMapperBenchmark</td><td>8.182 ns</td><td>0.3035 ns</td><td>0.3727 ns</td>
+</thead><tbody><tr><td>    DynamicMethodObjectBuilder</td><td>6.489 ns</td><td>0.2375 ns</td><td>0.5408 ns</td><td>6.177 ns</td>
+</tr><tr><td>ActivatorCreateInstanceObjectBuilder</td><td>74.205 ns</td><td>1.0243 ns</td><td>0.8553 ns</td><td>74.463 ns</td>
+</tr><tr><td>   ExpressionCtorObjectBuilder</td><td>4.889 ns</td><td>0.0231 ns</td><td>0.0181 ns</td><td>4.890 ns</td>
 </tr></tbody></table>
 </body>
 </html>

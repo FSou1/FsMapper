@@ -5,6 +5,6 @@ namespace FsMapper.Build
 {
     public interface IObjectBuilder
     {
-        Expression<Func<TDest>> GetActivator<TDest>();
+        Func<TDest> GetActivator<TDest>();
     }
 }

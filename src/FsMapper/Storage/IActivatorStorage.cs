@@ -7,7 +7,7 @@ namespace FsMapper.Storage
     {
         bool Exist<TDest>();
 
-        void Add<TDest>(Expression<Func<TDest>> activator) where TDest : class;
+        void Add<TDest>(Func<TDest> activator) where TDest : class;
 
         Func<TDest> Get<TDest>();
     }

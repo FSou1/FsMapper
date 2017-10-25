@@ -27,7 +27,7 @@ namespace FsMapper.Tests.Storage
         {
             // Arrange
             var storage = new DictionaryActivatorStorage();
-            Expression<Func<Customer>> activator = () => null;
+            Func<Customer> activator = () => null;
 
             // Act
             storage.Add(activator);
@@ -39,20 +39,20 @@ namespace FsMapper.Tests.Storage
         }
 
         [TestMethod]
-        public void Test_When_ActivatorAdded_Then_Get_Returns_CompiledFunc()
+        public void Test_When_ActivatorAdded_Then_Get_Returns_Func()
         {
             // Arrange
             var storage = new DictionaryActivatorStorage();
 
-            Expression<Func<Customer>> activator = () => null;
+            Func<Customer> activator = () => null;
 
             // Act
             storage.Add(activator);
 
-            var compiled = storage.Get<Customer>();
+            var retrieved = storage.Get<Customer>();
 
             // Assert
-            Assert.IsInstanceOfType(compiled, typeof(Func<Customer>));
+            Assert.IsInstanceOfType(retrieved, typeof(Func<Customer>));
         }
     }
 }

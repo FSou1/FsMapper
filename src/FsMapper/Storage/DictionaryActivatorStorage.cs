@@ -11,10 +11,10 @@ namespace FsMapper.Storage
             return _source.ContainsKey(typeof(TDest));
         }
 
-        public void Add<TDest>(Expression<Func<TDest>> activator) where TDest : class
+        public void Add<TDest>(Func<TDest> activator) where TDest : class
         {
             var key = typeof(TDest);
-            _source[key] = activator.Compile();
+            _source[key] = activator;
         }
 
         public Func<TDest> Get<TDest>()

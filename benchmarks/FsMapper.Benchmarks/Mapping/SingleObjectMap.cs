@@ -1,5 +1,6 @@
 ﻿using System;
 using BenchmarkDotNet.Attributes;
+using FsMapper.Benchmarks.Dto;
 using Mapster;
 
 namespace FsMapper.Benchmarks.Mapping
@@ -78,21 +79,5 @@ namespace FsMapper.Benchmarks.Mapping
             IsDeleted = true
         };
         #endregion
-    }
-
-    public class CustomerDto
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public DateTime CreatedAtUtc { get; set; }
-        public bool IsDeleted { get; set; }
-    }
-
-    public class Customer
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public DateTime CreatedAtUtc { get; set; }
-        public bool IsDeleted { get; set; }
     }
 }
