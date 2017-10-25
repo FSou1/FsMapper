@@ -17,10 +17,9 @@ namespace FsMapper.Storage
             _source[key] = activator;
         }
 
-        public Func<TDest> Get<TDest>()
+        public Func<object> Get<TDest>()
         {
-            var activator = _source[typeof(TDest)];
-            return () => (TDest)activator();
+            return _source[typeof(TDest)];
         }
 
         private readonly IDictionary<Type, Func<object>> _source

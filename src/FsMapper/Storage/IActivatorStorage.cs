@@ -9,6 +9,6 @@ namespace FsMapper.Storage
 
         void Add<TDest>(Func<TDest> activator) where TDest : class;
 
-        Func<TDest> Get<TDest>();
+        Func<object> Get<TDest>();
     }
 }

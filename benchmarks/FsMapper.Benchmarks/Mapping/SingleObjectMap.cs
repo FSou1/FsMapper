@@ -27,19 +27,19 @@ namespace FsMapper.Benchmarks.Mapping
 
         [Benchmark]
         public Customer FsMapperBenchmark() => mapper.Map<CustomerDto, Customer>(dto);
-        /*
+        
         [Benchmark]
         public Customer ExpressMapperBenchmark() => ExpressMapper.Map<CustomerDto, Customer>(dto);
 
         [Benchmark]
         public Customer AutoMapperBenchmark()=> AutoMapper.Map<CustomerDto, Customer>(dto);
-
+        
         [Benchmark]
         public Customer MapsterBenchmark() => dto.Adapt<Customer>();
-
+        
         [Benchmark]
         public Customer AgileMapperBenchmark() => AgileMapper.Map(dto).ToANew<Customer>();
-        */
+        
         [Benchmark]
         public Customer CtorMapperBenchmark() => new Customer
         {

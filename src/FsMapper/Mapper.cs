@@ -12,7 +12,7 @@ namespace FsMapper
 
         public TDest Map<TSource, TDest>(TSource source)
         {
-            return _storage.Get<TDest>()();
+            return (TDest)_storage.Get<TDest>()();
         }
         
         private readonly IObjectBuilder _builder = new ExpressionNewObjectBuilder();
