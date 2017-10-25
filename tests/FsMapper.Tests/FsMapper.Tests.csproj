@@ -52,6 +52,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Build\ActivatorCreateInstanceTests.cs" />
     <Compile Include="Build\ExpressionCtorActivatorTests.cs" />
     <Compile Include="Dto\Customer.cs" />
     <Compile Include="Dto\CustomerDto.cs" />
