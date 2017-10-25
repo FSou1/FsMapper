@@ -16,7 +16,7 @@ namespace FsMapper
             return activator();
         }
         
-        private readonly IObjectBuilder _builder = new ExpressionCtorObjectBuilder();
+        private readonly IObjectBuilder _builder = new DynamicMethodObjectBuilder();
         private readonly IActivatorStorage _storage = new DictionaryActivatorStorage();
     }
 

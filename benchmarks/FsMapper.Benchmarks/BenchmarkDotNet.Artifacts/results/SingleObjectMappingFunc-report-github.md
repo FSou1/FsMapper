@@ -9,7 +9,7 @@ Frequency=2143477 Hz, Resolution=466.5317 ns, Timer=TSC
 
 
 ```
- |              Method |       Mean |     Error |    StdDev |
- |-------------------- |-----------:|----------:|----------:|
- |   FsMapperBenchmark | 178.806 ns | 3.6321 ns | 3.2198 ns |
- | CtorMapperBenchmark |   7.596 ns | 0.2473 ns | 0.2313 ns |
+ |              Method |      Mean |     Error |    StdDev |
+ |-------------------- |----------:|----------:|----------:|
+ |   FsMapperBenchmark | 92.648 ns | 1.8724 ns | 1.6599 ns |
+ | CtorMapperBenchmark |  8.177 ns | 0.1351 ns | 0.1198 ns |
