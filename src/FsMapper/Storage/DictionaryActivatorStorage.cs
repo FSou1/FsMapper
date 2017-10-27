@@ -13,8 +13,7 @@ namespace FsMapper.Storage
 
         public void Add<TDest>(Func<TDest> activator) where TDest : class
         {
-            var key = typeof(TDest);
-            _source[key] = activator;
+            _source[typeof(TDest)] = activator;
         }
 
         public Func<object> Get<TDest>()

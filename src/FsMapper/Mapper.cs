@@ -1,4 +1,5 @@
 ﻿using FsMapper.Build;
+using FsMapper.Decorate;
 using FsMapper.Storage;
 
 namespace FsMapper
@@ -7,16 +8,23 @@ namespace FsMapper
     {
         public void Register<TSource, TDest>() where TDest : class
         {
-            _storage.Add(_builder.GetActivator<TDest>());
+            _activatorStorage.Add(_objectBuilder.GetActivator<TDest>());
+            _decoratorStorage.Add<TSource, TDest>(_objectDecorator.GetDecorator<TSource, TDest>());
         }
 
         public TDest Map<TSource, TDest>(TSource source)
         {
-            return (TDest)_storage.Get<TDest>()();
+            var activator = _activatorStorage.Get<TDest>();
+            var decorator = _decoratorStorage.Get<TSource, TDest>();
+            var instance = activator();
+            decorator(source, instance);
+            return (TDest)instance;
         }
         
-        private readonly IObjectBuilder _builder = new ExpressionNewObjectBuilder();
-        private readonly IActivatorStorage _storage = new DictionaryActivatorStorage();
+        private readonly IObjectBuilder _objectBuilder = new ExpressionNewObjectBuilder();
+        private readonly IObjectDecorator _objectDecorator = new ReflectionObjectDecorator();
+        private readonly IActivatorStorage _activatorStorage = new DictionaryActivatorStorage();
+        private readonly IDecoratorStorage _decoratorStorage = new DictionaryDecoratorStorage();
     }
 
     public interface IMapper

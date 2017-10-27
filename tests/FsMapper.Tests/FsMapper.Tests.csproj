@@ -55,6 +55,7 @@
     <Compile Include="Build\ActivatorCreateInstanceObjectBuilderTests.cs" />
     <Compile Include="Build\DynamicMethodObjectBuilderTests.cs" />
     <Compile Include="Build\ExpressionNewObjectBuilderTests.cs" />
+    <Compile Include="Decorate\ReflectionObjectDecoratorTests.cs" />
     <Compile Include="Dto\Customer.cs" />
     <Compile Include="Dto\CustomerDto.cs" />
     <Compile Include="Dto\Sale.cs" />
