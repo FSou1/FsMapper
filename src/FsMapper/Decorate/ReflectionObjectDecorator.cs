@@ -10,12 +10,13 @@ namespace FsMapper.Decorate
         {
             var destProps = typeof(TDest).GetProperties(BindingFlags.Public | BindingFlags.Instance);
             var sourceProps = typeof(TSource).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            var intersect = destProps.Join(sourceProps, x => x.Name, y => y.Name, (dest, src) => (src, dest));
+            var methods = destProps.Join(sourceProps, x => x.Name, y => y.Name, 
+                (dest, src) => (src.GetGetMethod(), dest.GetSetMethod()));
             return (fSource, fDest) =>
             {
-                foreach (var prop in intersect)
+                foreach (var pair in methods)
                 {
-                    prop.Item2.SetValue(fDest, prop.Item1.GetValue(fSource));
+                    pair.Item2.Invoke(fDest, new[] {pair.Item1.Invoke(fSource, null)});
                 }
             };
         }
