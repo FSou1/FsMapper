@@ -7,34 +7,30 @@ namespace FsMapper.Benchmarks.Build
 {
     public class SingleObjectBuild
     {
-        private Func<Customer> dynamicMethodActivator;
-        private Func<Customer> createInstanceActivator;
-        private Func<Customer> expressionNewActivator;
+        private Func<CustomerDto, Customer> expressionNewActivator;
+        private CustomerDto dto;
 
         [GlobalSetup]
         public void GlobalSetup()
         {
-            dynamicMethodActivator = new DynamicMethodObjectBuilder().GetActivator<Customer>();
-            createInstanceActivator = new ActivatorCreateInstanceObjectBuilder().GetActivator<Customer>();
-            expressionNewActivator = new ExpressionNewObjectBuilder().GetActivator<Customer>();
-        }
-
-        [Benchmark]
-        public Customer DynamicMethodObjectBuilder()
-        {
-            return dynamicMethodActivator();
-        }
-
-        [Benchmark]
-        public Customer ActivatorCreateInstanceObjectBuilder()
-        {
-            return createInstanceActivator();
+            dto = GetCustomerDto();
+            expressionNewActivator = new ExpressionNewObjectBuilder().GetActivator<CustomerDto, Customer>();
         }
 
         [Benchmark]
         public Customer ExpressionCtorObjectBuilder()
         {
-            return expressionNewActivator();
+            return expressionNewActivator(dto);
         }
+
+        #region Dto
+        internal CustomerDto GetCustomerDto() => new CustomerDto
+        {
+            Id = 42,
+            Title = "Test",
+            CreatedAtUtc = new DateTime(2017, 9, 3),
+            IsDeleted = true
+        };
+        #endregion
     }
 }

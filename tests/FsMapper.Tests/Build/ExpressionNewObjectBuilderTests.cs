@@ -15,11 +15,11 @@ namespace FsMapper.Tests.Build
             var builder = new ExpressionNewObjectBuilder();
             
             // Act
-            var activator = builder.GetActivator<Customer>();
+            var activator = builder.GetActivator<CustomerDto, Customer>();
 
             // Assert
             Assert.IsNotNull(activator);
-            Assert.IsInstanceOfType(activator, typeof(Func<Customer>));
+            Assert.IsInstanceOfType(activator, typeof(Func<CustomerDto, Customer>));
         }
 
         [TestMethod]
@@ -30,7 +30,7 @@ namespace FsMapper.Tests.Build
             var builder = new ExpressionNewObjectBuilder();
 
             // Act
-            var activator = builder.GetActivator<Sale>();
+            var activator = builder.GetActivator<Customer, Sale>();
         }
 
         [TestMethod]
@@ -38,14 +38,20 @@ namespace FsMapper.Tests.Build
         {
             // Arrange
             var builder = new ExpressionNewObjectBuilder();
+            var dto = new CustomerDto
+            {
+                Id = 1,
+                Title = "LLC"
+            };
 
             // Act
-            var activator = builder.GetActivator<Customer>();
-            var instance = activator();
+            var activator = builder.GetActivator<CustomerDto, Customer>();
+            var instance = activator(dto);
 
             // Assert
             Assert.IsNotNull(instance);
             Assert.IsInstanceOfType(instance, typeof(Customer));
+            Assert.AreEqual(1, instance.Id);
         }
     }
 }

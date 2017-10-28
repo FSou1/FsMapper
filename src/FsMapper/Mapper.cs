@@ -1,35 +1,44 @@
-﻿using FsMapper.Build;
-using FsMapper.Decorate;
-using FsMapper.Storage;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using FsMapper.Build;
 
 namespace FsMapper
 {
     public class Mapper : IMapper
     {
-        public void Register<TSource, TDest>() where TDest : class
+        public void Register<TSource, TDest>()
         {
-            _activatorStorage.Add(_objectBuilder.GetActivator<TDest>());
-            _decoratorStorage.Add<TSource, TDest>(_objectDecorator.GetDecorator<TSource, TDest>());
+            var activator = _objectBuilder.GetActivator<TSource, TDest>();
+            var key = new TypeTuple(typeof(TSource), typeof(TDest));
+            AddMap(key, activator);
         }
 
         public TDest Map<TSource, TDest>(TSource source)
         {
-            var activator = _activatorStorage.Get<TDest>();
-            var decorator = _decoratorStorage.Get<TSource, TDest>();
-            var instance = activator();
-            decorator(source, instance);
-            return (TDest)instance;
+            var key = new TypeTuple(typeof(TSource), typeof(TDest));
+            var activator = GetMap(key);
+            return ((Func<TSource, TDest>)activator)(source);
         }
-        
+
+        internal void AddMap<TSource, TDest>(TypeTuple key, Func<TSource, TDest> activator)
+        {
+            _source[key] = activator;
+        }
+
+        internal Delegate GetMap(TypeTuple key)
+        {
+            return (Delegate)_source[key];
+        }
+
+        private readonly Hashtable _source = new Hashtable();
+
         private readonly IObjectBuilder _objectBuilder = new ExpressionNewObjectBuilder();
-        private readonly IObjectDecorator _objectDecorator = new ReflectionObjectDecorator();
-        private readonly IActivatorStorage _activatorStorage = new DictionaryActivatorStorage();
-        private readonly IDecoratorStorage _decoratorStorage = new DictionaryDecoratorStorage();
     }
 
     public interface IMapper
     {
-        void Register<TSource, TDest>() where TDest : class;
+        void Register<TSource, TDest>();
         
         TDest Map<TSource, TDest>(TSource source);
     }
