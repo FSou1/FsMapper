@@ -18,7 +18,13 @@ namespace FsMapper.Tests
         [TestMethod]
         public void WhenMappingExist_Then_Map()
         {
-            var dto = GetCustomerDto();
+            var dto = new CustomerDto
+            {
+                Id = 42,
+                Title = "Test",
+                CreatedAtUtc = new DateTime(2017, 9, 3),
+                IsDeleted = true
+            };
 
             mapper.Register<CustomerDto, Customer>();
 
