@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>SingleObjectBuild</title>
+<title>ElementGetHashCode</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -23,13 +23,10 @@ Frequency=2143473 Hz, Resolution=466.5326 ns, Timer=TSC
 <pre><code></code></pre>
 
 <table>
-<thead><tr><th>               Method</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th>
+<thead><tr><th> Method</th><th>Mean</th><th>Error</th><th>StdDev</th>
 </tr>
-</thead><tbody><tr><td>ExpressionCtorObjectBuilder</td><td>8.548 ns</td><td>0.2764 ns</td><td>0.4541 ns</td><td>8.608 ns</td>
-</tr><tr><td>ActivatorCreateInstance</td><td>79.379 ns</td><td>1.6812 ns</td><td>3.1987 ns</td><td>78.890 ns</td>
-</tr><tr><td>ConstructorInfoInvoke</td><td>164.445 ns</td><td>3.3355 ns</td><td>4.3371 ns</td><td>164.016 ns</td>
-</tr><tr><td>DynamicMethodILGenerator</td><td>5.859 ns</td><td>0.2455 ns</td><td>0.3015 ns</td><td>5.819 ns</td>
-</tr><tr><td>              NewCtor</td><td>6.989 ns</td><td>0.2615 ns</td><td>0.5741 ns</td><td>6.756 ns</td>
+</thead><tbody><tr><td>TypeTupleHash</td><td>29.72 ns</td><td>0.3540 ns</td><td>0.3311 ns</td>
+</tr><tr><td>TupleHash</td><td>25.79 ns</td><td>0.2385 ns</td><td>0.2115 ns</td>
 </tr></tbody></table>
 </body>
 </html>
