@@ -11,9 +11,9 @@ Frequency=2143473 Hz, Resolution=466.5326 ns, Timer=TSC
 ```
  |                 Method |       Mean |     Error |    StdDev |
  |----------------------- |-----------:|----------:|----------:|
- |      FsMapperBenchmark |  95.929 ns | 1.3622 ns | 1.1375 ns |
- | ExpressMapperBenchmark | 237.110 ns | 1.4847 ns | 1.3888 ns |
- |    AutoMapperBenchmark | 196.640 ns | 4.6218 ns | 5.5019 ns |
- |       MapsterBenchmark |  85.906 ns | 0.3268 ns | 0.2897 ns |
- |   AgileMapperBenchmark | 212.976 ns | 1.0561 ns | 0.8246 ns |
- |    CtorMapperBenchmark |   7.202 ns | 0.0832 ns | 0.0737 ns |
+ |      FsMapperBenchmark |  84.492 ns | 1.6972 ns | 1.6669 ns |
+ | ExpressMapperBenchmark | 251.161 ns | 4.6736 ns | 4.3717 ns |
+ |    AutoMapperBenchmark | 204.142 ns | 4.2002 ns | 9.1309 ns |
+ |       MapsterBenchmark |  90.949 ns | 1.6393 ns | 1.4532 ns |
+ |   AgileMapperBenchmark | 218.021 ns | 3.0921 ns | 2.7410 ns |
+ |    CtorMapperBenchmark |   7.806 ns | 0.2472 ns | 0.2312 ns |

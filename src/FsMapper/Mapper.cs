@@ -28,10 +28,10 @@ namespace FsMapper
 
         internal Delegate GetMap(TypeTuple key)
         {
-            return (Delegate)_source[key];
+            return _source[key];
         }
 
-        private readonly Hashtable _source = new Hashtable();
+        private readonly Dictionary<TypeTuple, Delegate> _source = new Dictionary<TypeTuple, Delegate>();
 
         private readonly IObjectBuilder _objectBuilder = new ExpressionNewObjectBuilder();
     }
